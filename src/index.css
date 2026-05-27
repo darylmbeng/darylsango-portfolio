@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Luxurious Editorial Color System - Warm Ivory and deep slate charcoal */
+  --color-ivory-light: #FAF9F6;  /* Soft Warm Off-White Page Canvas */
+  --color-ivory-card: #F4F2EB;   /* Warmer sand-toned neutral card background */
+  --color-accent-amber: #B89253; /* Premium golden olive luxury accent */
+  --color-charcoal-deep: #161616; /* Near-black for rich editorial typography */
+  --color-charcoal-muted: #3D3D3C; /* Muted slate gray for supporting text */
+  --color-sand: #E7E3D4;         /* Dividing lines / subtle borders */
+}
+
+/* Base body styles */
+body {
+  background-color: var(--color-ivory-light);
+  color: var(--color-charcoal-deep);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar styling for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sand);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-amber);
+}
+
+/* Custom transitions and styling definitions */
+.editorial-link {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-accent-amber);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.editorial-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
