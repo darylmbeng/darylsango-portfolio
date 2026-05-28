@@ -4,15 +4,25 @@
  */
 
 import express, { Request, Response } from "express";
+import cors from "cors";
 import path from "path";
 import fs from "fs";
 import { createServer as createViteServer } from "vite";
+
+
 
 async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
 
   app.use(express.json());
+  app.use(cors({
+    origin: [
+      "https://darylsango-portfolio.vercel.app", // Replace with your actual Vercel production URL
+      "http://localhost:3000",                  // Vercel local development port
+      "http://localhost:5173"                  // Vite local development port
+    ]
+  }));
 
   // API Route for sending emails via Resend
   app.post("/api/send-email", async (req: Request, res: Response) => {
